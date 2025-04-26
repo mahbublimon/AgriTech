@@ -1,0 +1,137 @@
+/* Marketplace Styles */
+.marketplace-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.product-card {
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-img-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background-color: #f8f9fa;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+.product-body {
+    padding: 1.5rem;
+}
+
+.product-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #343a40;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.product-seller {
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.product-description {
+    color: #495057;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /* Standard property for line clamp */
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-line-clamp: 3;
+    display: box;
+    line-clamp: 3;
+    box-orient: vertical;
+}
+
+.product-rating {
+    color: #ffc107;
+    margin-bottom: 1rem;
+}
+
+.view-details-btn {
+    width: 100%;
+}
+
+/* Modal Styles */
+.modal-product-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+}
+
+.modal-product-price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #28a745;
+}
+
+.modal-product-stock {
+    font-weight: 500;
+}
+
+.in-stock {
+    color: #28a745;
+}
+
+.low-stock {
+    color: #fd7e14;
+}
+
+.out-of-stock {
+    color: #dc3545;
+}
+
+/* Pagination Styles */
+.pagination .page-item.active .page-link {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.pagination .page-link {
+    color: #28a745;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .product-img-container {
+        height: 150px;
+    }
+    
+    .product-body {
+        padding: 1rem;
+    }
+}

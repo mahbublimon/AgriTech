@@ -1,0 +1,127 @@
+/* Price Prediction Page Styles */
+.prediction-hero {
+    background-color: #28a745;
+    color: white;
+    padding: 5rem 0;
+}
+
+.prediction-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.prediction-hero p {
+    font-size: 1.25rem;
+    max-width: 500px;
+}
+
+.prediction-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2.5rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.result-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.predicted-price {
+    background: rgba(40, 167, 69, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.predicted-price h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #28a745;
+    margin: 0.5rem 0;
+}
+
+.best-time {
+    background: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+}
+
+.price-chart-container {
+    height: 250px;
+    margin-top: 1rem;
+}
+
+.recommendations {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.recommendations ul {
+    padding-left: 1.5rem;
+    margin-bottom: 0;
+}
+
+.recommendations li {
+    margin-bottom: 0.5rem;
+}
+
+.work-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    height: 100%;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.work-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.work-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(40, 167, 69, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: #28a745;
+    font-size: 1.75rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .prediction-hero {
+        padding: 3rem 0;
+        text-align: center;
+    }
+    
+    .prediction-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .prediction-hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .predicted-price h3 {
+        font-size: 2rem;
+    }
+    
+    .price-chart-container {
+        height: 200px;
+        margin-top: 2rem;
+    }
+}
