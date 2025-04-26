@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Logistics | AgriTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/logistics.css">
+    <style>
+        body {
+            padding-top: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section with CTA -->
+    <section class="logistics-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Smart Farm-to-Market Logistics</h1>
+                    <p class="lead mb-4">AI-powered logistics to maximize freshness and minimize costs</p>
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#bookDeliveryModal">
+                            <i class="fas fa-truck-fast me-2"></i> Book Delivery
+                        </button>
+                        <a href="#live-tracker" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-map-marked-alt me-2"></i> Track Shipment
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="Images/logistics-hero-illustration.png" class="img-fluid" alt="Logistics Network">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="features-section py-5 bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon bg-primary">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Same-Day Dispatch</h3>
+                        <p>Harvest picked up within 6 hours of booking</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon bg-success">
+                            <i class="fas fa-temperature-low"></i>
+                        </div>
+                        <h3>Climate Control</h3>
+                        <p>Temperature monitoring for perishables</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon bg-warning">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Damage Protection</h3>
+                        <p>100% compensation guarantee</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Network Map -->
+    <section id="live-tracker" class="map-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">
+                <i class="fas fa-map-marked-alt me-2"></i> Real-Time Logistics Network
+            </h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div id="logisticsMap"></div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="map-sidebar">
+                        <h4 class="mb-4">Active Shipments <span class="badge bg-primary">247 Live</span></h4>
+                        <div class="shipment-list">
+                            <div class="shipment-item">
+                                <div class="shipment-meta">
+                                    <span class="badge bg-success">In Transit</span>
+                                    <small>#SH-789456</small>
+                                </div>
+                                <div class="shipment-route">
+                                    Rangpur → Dhaka
+                                </div>
+                                <div class="shipment-progress">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 65%"></div>
+                                    </div>
+                                    <small>ETA: 2h 15m</small>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary mt-2">Track</button>
+                            </div>
+                            <!-- More shipment items would load here via JS -->
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#trackShipmentModal">
+                                <i class="fas fa-search me-2"></i> Track Your Shipment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Calculator -->
+    <section class="calculator-section py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">
+                <i class="fas fa-calculator me-2"></i> Instant Price Calculator
+            </h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="calculator-card p-4">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">From</label>
+                                <select class="form-select">
+                                    <option>Select District</option>
+                                    <option>Rangpur</option>
+                                    <option>Dhaka</option>
+                                    <option>Chittagong</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">To</label>
+                                <select class="form-select">
+                                    <option>Select District</option>
+                                    <option>Dhaka</option>
+                                    <option>Chittagong</option>
+                                    <option>Sylhet</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Product Type</label>
+                                <select class="form-select">
+                                    <option>Vegetables</option>
+                                    <option>Fruits</option>
+                                    <option>Grains</option>
+                                    <option>Dairy</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Weight (kg)</label>
+                                <input type="number" class="form-control" value="50">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Urgency</label>
+                                <select class="form-select">
+                                    <option>Standard (3 days)</option>
+                                    <option>Express (24h)</option>
+                                    <option>Same Day</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="result-box mt-4 p-3 bg-primary text-white rounded">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="mb-0">Estimated Cost:</h4>
+                                <h4 class="mb-0">৳1,250</h4>
+                            </div>
+                            <small class="d-block mt-1">Includes all fees and insurance</small>
+                        </div>
+                        <button class="btn btn-success w-100 mt-3">
+                            <i class="fas fa-truck-fast me-2"></i> Book This Shipment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Storage Solutions -->
+    <section class="storage-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">
+                <i class="fas fa-warehouse me-2"></i> Smart Storage Solutions
+            </h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="storage-card">
+                        <div class="storage-badge">Most Popular</div>
+                        <h3>Short-Term Storage</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> 1-7 day storage</li>
+                            <li><i class="fas fa-check-circle"></i> Daily quality checks</li>
+                            <li><i class="fas fa-check-circle"></i> ৳40/kg</li>
+                        </ul>
+                        <button class="btn btn-outline-primary">Reserve Space</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="storage-card featured">
+                        <div class="storage-badge">Best Value</div>
+                        <h3>Seasonal Storage</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Up to 6 months</li>
+                            <li><i class="fas fa-check-circle"></i> Climate controlled</li>
+                            <li><i class="fas fa-check-circle"></i> ৳25/kg/month</li>
+                        </ul>
+                        <button class="btn btn-primary">Reserve Space</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="storage-card">
+                        <h3>Processing Hub</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Cleaning & packaging</li>
+                            <li><i class="fas fa-check-circle"></i> Labeling services</li>
+                            <li><i class="fas fa-check-circle"></i> Custom pricing</li>
+                        </ul>
+                        <button class="btn btn-outline-primary">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Shipment Modal -->
+    <div class="modal fade" id="trackShipmentModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Track Your Shipment</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Enter Shipment ID (e.g. SH-123456)">
+                        <button class="btn btn-success">Track</button>
+                    </div>
+                    <div class="tracking-result text-center py-4">
+                        <img src="Images/tracking-illustration.png" width="200" class="mb-3">
+                        <p>Enter your shipment ID to view real-time location and ETA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="JavaScript/script.js"></script>
+    <script src="JavaScript/logistics.js"></script>
+</body>
+</html>

@@ -1,108 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - AgriTech</title>
+    <title>About Us | AgriTech</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/about.css">
+    <style>
+        body {
+            padding-top: 0 !important;
+        }
+    </style>
 </head>
-
 <body>
-
-    <!-- Navbar Placeholder -->
+    <!-- Navbar Container -->
     <div id="navbar-container"></div>
 
-    <!-- About Us Section -->
-    <section class="container my-5">
-        <div class="row text-center">
-            <div class="col">
-                <h1>About Us</h1>
-                <p class="lead">
-                    We are a diverse, ambitious team excited about what we do. We aim to build a culture that focuses on people over processes. 
-                    We believe in a Dream Team where great and good people can work together to bring about a revolutionary change that benefits mankind.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Culture and Values Section -->
-    <section class="container my-5">
-        <h2 class="text-center mb-4">Our Culture & Values</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="value-box">
-                    <h4>Trust & Integrity</h4>
-                    <p>We build an environment of trust, allowing open discussions and honesty in all decisions.</p>
+    <!-- About Hero Section -->
+    <section class="about-hero bg-success text-white py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold">Our Mission</h1>
+                    <p class="lead">Empowering Bangladesh's farmers with technology to eliminate middlemen and maximize profits.</p>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="value-box">
-                    <h4>Judgment</h4>
-                    <p>We encourage good decision-making that combines knowledge and intuition validated by data.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="value-box">
-                    <h4>Curiousness</h4>
-                    <p>We embrace change, stepping out of our comfort zone, and constantly learning and improving.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="value-box">
-                    <h4>Courage</h4>
-                    <p>We have the courage to think big, take risks, and make things happen.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="value-box">
-                    <h4>Impact & Inclusiveness</h4>
-                    <p>We aim to create positive change for everyone, regardless of background or identity.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="value-box">
-                    <h4>Getting Things Done</h4>
-                    <p>We focus on results, overcome setbacks, and continuously innovate to deliver excellence.</p>
+                <div class="col-lg-6">
+                    <img src="Images/farmers-team.jpg" alt="Farmers Team" class="img-fluid rounded">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Funders Section -->
-    <section class="container my-5 text-center">
-        <h2>Our Funders</h2>
-        <p>We are supported by leading investors and financial organizations.</p>
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="d-flex flex-wrap justify-content-center align-items-center">
-                    <img src="funders1.jpg" alt="Funders 1" class="funders-logo mx-3">
-                    <img src="funders2.jpg" alt="Funders 2" class="funders-logo mx-3">
-                    <img src="funders3.jpg" alt="Funders 3" class="funders-logo mx-3">
-                    <img src="funders4.jpg" alt="Funders 4" class="funders-logo mx-3">
-                    <img src="funders5.jpg" alt="Funders 5" class="funders-logo mx-3">
-                    <img src="funders6.jpg" alt="Funders 6" class="funders-logo mx-3">
-                    <img src="funders7.jpg" alt="Funders 7" class="funders-logo mx-3">
+    <!-- Story Section -->
+    <section class="story-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Our Story</h2>
+                    <p>Founded in 2024, AgriTech was born out of a simple observation: farmers work hard but earn little due to fragmented markets and exploitative middlemen.</p>
+                    <p>We built an all-in-one platform combining finance, market access, and AI tools to give farmers control over their livelihoods.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="milestones">
+                        <div class="milestone">
+                            <span class="year">2024</span>
+                            <p>Launched pilot in Rangpur with 1,000 farmers</p>
+                        </div>
+                        <div class="milestone">
+                            <span class="year">2025</span>
+                            <p>Expanded to 10 districts with 50K+ users</p>
+                        </div>
+                        <div class="milestone">
+                            <span class="year">2026</span>
+                            <p>Target: Nationwide coverage</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Join Our Team Section -->
-    <section class="container my-5 text-center">
-        <h2>Join Our Team</h2>
-        <p>Be a part of an organization of brilliant thinkers who work towards something new every day.</p>
-        <a href="career.html" class="btn btn-success">Explore Careers</a>
+    <!-- Team Section -->
+    <section class="team-section py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Meet the Team</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="team-card text-center p-4">
+                        <img src="Images/team1.jpg" class="rounded-circle mb-3" width="150" alt="CEO">
+                        <h4>Md. Rahman</h4>
+                        <p class="text-muted">Founder & CEO</p>
+                        <p>Former agri-economist with 10+ years in rural development.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card text-center p-4">
+                        <img src="Images/team2.jpg" class="rounded-circle mb-3" width="150" alt="CTO">
+                        <h4>Fatima Akter</h4>
+                        <p class="text-muted">CTO</p>
+                        <p>AI/ML expert from BUET, specializing in agri-tech solutions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card text-center p-4">
+                        <img src="Images/team3.jpg" class="rounded-circle mb-3" width="150" alt="CFO">
+                        <h4>Kamal Hossain</h4>
+                        <p class="text-muted">CFO</p>
+                        <p>Microfinance specialist with BRAC experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer Placeholder -->
+    <!-- Partners Section -->
+    <section class="partners-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Our Partners</h2>
+            <div class="row align-items-center justify-content-center g-4">
+                <div class="col-6 col-md-2">
+                    <img src="Images/partner-brac.png" class="img-fluid" alt="BRAC">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="Images/partner-idlc.png" class="img-fluid" alt="IDLC">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="Images/partner-a2i.png" class="img-fluid" alt="a2i">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="Images/partner-dae.png" class="img-fluid" alt="DAE">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
     <div id="footer-container"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="JavaScript/script.js"></script>
+    <script src="JavaScript/about.js"></script>
 </body>
 </html>

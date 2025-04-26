@@ -1,0 +1,53 @@
+/* About Page Styles */
+.about-hero {
+    background: linear-gradient(rgba(0, 100, 0, 0.8), url('../Images/farm-field.jpg'));
+    background-size: cover;
+    background-position: center;
+}
+
+.section-title {
+    color: #2e8b57;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #2e8b57;
+}
+
+.milestones {
+    border-left: 3px solid #2e8b57;
+    padding-left: 20px;
+}
+
+.milestone {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.milestone .year {
+    background: #2e8b57;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.team-card {
+    background: white;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
