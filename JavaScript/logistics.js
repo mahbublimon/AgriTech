@@ -1,18 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Load navbar and footer
-    fetch('Partials/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-container').innerHTML = data;
-            setActiveNav('logistics');
-        });
-
-    fetch('Partials/footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-container').innerHTML = data;
-        });
-
     // Initialize Leaflet map
     initLogisticsMap();
     

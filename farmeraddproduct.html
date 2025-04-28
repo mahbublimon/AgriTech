@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product | AgriTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/farmer-add-product.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <!-- Add Product Section -->
+    <section class="add-product py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- Farmer Sidebar -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Farmer Menu</h5>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <a href="farmerdashboard.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                            </a>
+                            <a href="farmer-products.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-box-open me-2"></i> My Products
+                            </a>
+                            <a href="farmer-add-product.html" class="list-group-item list-group-item-action active">
+                                <i class="fas fa-plus-circle me-2"></i> Add Product
+                            </a>
+                            <a href="farmer-orders.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-shopping-bag me-2"></i> Orders
+                            </a>
+                            <a href="farmer-loan.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-hand-holding-usd me-2"></i> Loan Applications
+                            </a>
+                            <a href="farmer-profile.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-user-cog me-2"></i> Profile Settings
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-9">
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <h4 class="mb-0">Add New Product</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="addProductForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="productName" class="form-label">Product Name</label>
+                                        <input type="text" class="form-control" id="productName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="productCategory" class="form-label">Category</label>
+                                        <select class="form-select" id="productCategory" required>
+                                            <option value="">Select Category</option>
+                                            <option value="vegetables">Vegetables</option>
+                                            <option value="fruits">Fruits</option>
+                                            <option value="grains">Grains</option>
+                                            <option value="fish">Fish</option>
+                                            <option value="poultry">Poultry</option>
+                                            <option value="dairy">Dairy</option>
+                                            <option value="spices">Spices</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="productPrice" class="form-label">Price per Unit (৳)</label>
+                                        <input type="number" class="form-control" id="productPrice" min="1" step="0.01" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="productStock" class="form-label">Available Stock</label>
+                                        <input type="number" class="form-control" id="productStock" min="1" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="productDescription" class="form-label">Description</label>
+                                        <textarea class="form-control" id="productDescription" rows="3" required></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="productDistrict" class="form-label">District of Origin</label>
+                                        <select class="form-select" id="productDistrict" required>
+                                            <option value="">Select District</option>
+                                            <option value="dhaka">Dhaka</option>
+                                            <option value="chittagong">Chittagong</option>
+                                            <option value="sylhet">Sylhet</option>
+                                            <option value="khulna">Khulna</option>
+                                            <option value="barishal">Barishal</option>
+                                            <option value="rajshahi">Rajshahi</option>
+                                            <option value="rangpur">Rangpur</option>
+                                            <option value="mymensingh">Mymensingh</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="productHarvestDate" class="form-label">Harvest Date</label>
+                                        <input type="date" class="form-control" id="productHarvestDate" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="productImage" class="form-label">Product Image</label>
+                                        <input type="file" class="form-control" id="productImage" accept="image/*" required>
+                                        <div class="form-text">Upload a clear photo of your product (max 2MB)</div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="organicCertified">
+                                            <label class="form-check-label" for="organicCertified">
+                                                Organically Certified
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-save me-2"></i> Add Product
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Success</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your product has been added successfully!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continue</button>
+                    <a href="farmer-products.html" class="btn btn-outline-success">View Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JavaScript/script.js"></script>
+    <script src="JavaScript/farmeraddproduct.js"></script>
+</body>
+</html>

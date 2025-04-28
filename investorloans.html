@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Applications | AgriTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/investor-loans.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <!-- Loan Applications Section -->
+    <section class="loan-applications py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- Investor Sidebar -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Investor Menu</h5>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <a href="investor-dashboard.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                            </a>
+                            <a href="investor-loans.html" class="list-group-item list-group-item-action active">
+                                <i class="fas fa-hand-holding-usd me-2"></i> Loan Applications
+                            </a>
+                            <a href="investor-portfolio.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-chart-pie me-2"></i> Investment Portfolio
+                            </a>
+                            <a href="investor-payments.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-money-bill-wave me-2"></i> Payments
+                            </a>
+                            <a href="investor-profile.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-user-cog me-2"></i> Profile Settings
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Filters -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-white">
+                            <h6 class="mb-0">Filters</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="loanStatusFilter" class="form-label">Status</label>
+                                <select class="form-select" id="loanStatusFilter">
+                                    <option value="all">All Statuses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="rejected">Rejected</option>
+                                    <option value="disbursed">Disbursed</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loanAmountFilter" class="form-label">Amount Range</label>
+                                <select class="form-select" id="loanAmountFilter">
+                                    <option value="all">All Amounts</option>
+                                    <option value="0-50000">Up to ৳50,000</option>
+                                    <option value="50000-200000">৳50,000 - ৳200,000</option>
+                                    <option value="200000-500000">৳200,000 - ৳500,000</option>
+                                    <option value="500000+">Over ৳500,000</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loanDistrictFilter" class="form-label">District</label>
+                                <select class="form-select" id="loanDistrictFilter">
+                                    <option value="all">All Districts</option>
+                                    <option value="dhaka">Dhaka</option>
+                                    <option value="chittagong">Chittagong</option>
+                                    <option value="sylhet">Sylhet</option>
+                                    <option value="khulna">Khulna</option>
+                                    <option value="barishal">Barishal</option>
+                                    <option value="rajshahi">Rajshahi</option>
+                                    <option value="rangpur">Rangpur</option>
+                                    <option value="mymensingh">Mymensingh</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-sm btn-success w-100" id="applyFiltersBtn">Apply Filters</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-9">
+                    <div class="card">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">Loan Applications</h4>
+                            <div>
+                                <button class="btn btn-sm btn-outline-success me-2" id="exportLoansBtn">
+                                    <i class="fas fa-download me-1"></i> Export
+                                </button>
+                                <button class="btn btn-sm btn-success" id="refreshLoansBtn">
+                                    <i class="fas fa-sync-alt me-1"></i> Refresh
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Loan ID</th>
+                                            <th>Farmer</th>
+                                            <th>Amount</th>
+                                            <th>Purpose</th>
+                                            <th>District</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="loanApplicationsTable">
+                                        <!-- Loan applications will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- Pagination -->
+                            <nav aria-label="Loan pagination" class="mt-4">
+                                <ul class="pagination justify-content-center" id="loanPagination">
+                                    <!-- Pagination will be generated here -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loan Details Modal -->
+    <div class="modal fade" id="loanDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Loan Application Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="loanDetailsBody">
+                    <!-- Loan details will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="approveLoanBtn">Approve Loan</button>
+                    <button type="button" class="btn btn-outline-danger" id="rejectLoanBtn">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JavaScript/script.js"></script>
+    <script src="../JavaScript/investor-loans.js"></script>
+</body>
+</html>

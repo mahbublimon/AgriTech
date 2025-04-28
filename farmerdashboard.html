@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard | AgriTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/farmer-dashboard.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <!-- Farmer Dashboard -->
+    <section class="farmer-dashboard py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- Sidebar -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Farmer Menu</h5>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <a href="farmer-dashboard.html" class="list-group-item list-group-item-action active">
+                                <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                            </a>
+                            <a href="farmer-products.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-box-open me-2"></i> My Products
+                            </a>
+                            <a href="farmer-add-product.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-plus-circle me-2"></i> Add Product
+                            </a>
+                            <a href="farmer-orders.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-shopping-bag me-2"></i> Orders
+                            </a>
+                            <a href="farmer-loan.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-hand-holding-usd me-2"></i> Loan Applications
+                            </a>
+                            <a href="farmer-profile.html" class="list-group-item list-group-item-action">
+                                <i class="fas fa-user-cog me-2"></i> Profile Settings
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-white">
+                            <h6 class="mb-0">Quick Stats</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Active Products:</span>
+                                <span class="fw-bold" id="activeProducts">12</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Pending Orders:</span>
+                                <span class="fw-bold" id="pendingOrders">5</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Total Earnings:</span>
+                                <span class="fw-bold text-success" id="totalEarnings">৳25,450</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-9">
+                    <!-- Dashboard Overview -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Dashboard Overview</h5>
+                            <a href="farmeraddproduct.html" class="btn btn-success btn-sm">
+                                <i class="fas fa-plus me-1"></i> Add Product
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-box-open fa-3x text-success mb-3"></i>
+                                            <h5>Products Management</h5>
+                                            <p>Add, edit or remove your agricultural products</p>
+                                            <a href="farmer-products.html" class="btn btn-outline-success">Manage Products</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-shopping-bag fa-3x text-primary mb-3"></i>
+                                            <h5>Orders Management</h5>
+                                            <p>View and process customer orders</p>
+                                            <a href="farmer-orders.html" class="btn btn-outline-primary">View Orders</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-chart-line fa-3x text-info mb-3"></i>
+                                            <h5>Sales Analytics</h5>
+                                            <p>Track your sales and performance</p>
+                                            <a href="farmer-analytics.html" class="btn btn-outline-info">View Analytics</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-hand-holding-usd fa-3x text-warning mb-3"></i>
+                                            <h5>Loan Services</h5>
+                                            <p>Apply for agricultural loans</p>
+                                            <a href="farmer-loan.html" class="btn btn-outline-warning">Loan Options</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Orders -->
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Recent Orders</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentOrdersTable">
+                                        <!-- Orders will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-end mt-3">
+                                <a href="farmer-orders.html" class="btn btn-sm btn-outline-success">View All Orders</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JavaScript/script.js"></script>
+    <script src="../JavaScript/farmerdashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+/* Confirmation Page Styles */
+.confirmation-section {
+    background-color: #f8f9fa;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.confirmation-icon {
+    font-size: 5rem;
+    color: #28a745;
+}
+
+.confirmation-details {
+    max-width: 600px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.confirmation-details h6 {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.confirmation-details p {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}

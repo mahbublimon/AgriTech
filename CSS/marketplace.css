@@ -1,7 +1,13 @@
 /* Marketplace Styles */
 .marketplace-header {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
+    background: linear-gradient(rgba(40, 167, 69, 0.9), rgba(40, 167, 69, 0.95)), 
+                url('../Images/marketplace-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.search-filter {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .product-card {
@@ -11,11 +17,13 @@
     transition: all 0.3s ease;
     margin-bottom: 30px;
     height: 100%;
+    background: white;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: #28a745;
 }
 
 .product-img-container {
@@ -45,6 +53,11 @@
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: #343a40;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-price {
@@ -57,6 +70,17 @@
 .product-seller {
     color: #6c757d;
     margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.product-location {
+    color: #6c757d;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.product-location i {
+    color: #dc3545;
 }
 
 .product-description {
@@ -66,13 +90,7 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    /* Standard property for line clamp */
-    display: -moz-box;
-    -moz-box-orient: vertical;
-    -moz-line-clamp: 3;
-    display: box;
-    line-clamp: 3;
-    box-orient: vertical;
+    text-overflow: ellipsis;
 }
 
 .product-rating {
@@ -87,10 +105,12 @@
 /* Modal Styles */
 .modal-product-img {
     width: 100%;
-    max-height: 300px;
+    height: 300px;
     object-fit: contain;
     margin-bottom: 1.5rem;
     border-radius: 8px;
+    background: #f8f9fa;
+    padding: 20px;
 }
 
 .modal-product-price {
@@ -101,6 +121,7 @@
 
 .modal-product-stock {
     font-weight: 500;
+    margin-bottom: 1rem;
 }
 
 .in-stock {
@@ -113,6 +134,19 @@
 
 .out-of-stock {
     color: #dc3545;
+}
+
+.product-specs {
+    margin: 1.5rem 0;
+}
+
+.spec-item {
+    margin-bottom: 0.5rem;
+}
+
+.spec-item strong {
+    display: inline-block;
+    width: 120px;
 }
 
 /* Pagination Styles */
@@ -134,4 +168,22 @@
     .product-body {
         padding: 1rem;
     }
+    
+    .marketplace-header {
+        text-align: center;
+        padding-bottom: 2rem;
+    }
+    
+    .search-filter {
+        margin-top: 1.5rem;
+    }
+}
+
+/* Cart badge */
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.6rem;
+    padding: 3px 6px;
 }

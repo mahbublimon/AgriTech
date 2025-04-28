@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | AgriTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/payment.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <section class="payment-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            <h3 class="mb-0"><i class="fas fa-credit-card me-2"></i> Payment</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i> 
+                                Order Total: <strong id="orderTotalAmount">৳0.00</strong>
+                            </div>
+                            
+                            <div class="payment-methods">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="bkash" checked>
+                                    <label class="form-check-label" for="bkash">
+                                        <img src="Images/payment/bkash.png" alt="bKash" height="30" class="ms-2">
+                                    </label>
+                                </div>
+                                
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="nagad">
+                                    <label class="form-check-label" for="nagad">
+                                        <img src="Images/payment/nagad.png" alt="Nagad" height="30" class="ms-2">
+                                    </label>
+                                </div>
+                                
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="card">
+                                    <label class="form-check-label" for="card">
+                                        <i class="far fa-credit-card me-2"></i> Credit/Debit Card
+                                    </label>
+                                </div>
+                                
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="paymentMethod"

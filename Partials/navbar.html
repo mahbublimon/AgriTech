@@ -13,7 +13,7 @@
         <!-- Navigation items on the right -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 
                 <!-- Services Dropdown -->
                 <li class="nav-item dropdown dropdown-hover">
@@ -31,6 +31,14 @@
                 <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 
+                <!-- Cart Icon -->
+                <li class="nav-item">
+                    <a class="nav-link position-relative" href="cart.html" id="cartLink">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge rounded-pill bg-danger cart-badge d-none" id="cartBadge">0</span>
+                    </a>
+                </li>
+                
                 <!-- Account Dropdown -->
                 <li class="nav-item dropdown dropdown-hover" id="authDropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button">
@@ -42,6 +50,8 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item protected-link d-none" href="dashboard.html" id="dashboardLink">Dashboard</a></li>
                         <li><a class="dropdown-item protected-link d-none" href="profile.html" id="profileLink">My Profile</a></li>
+                        <li><a class="dropdown-item protected-link d-none" href="farmer-dashboard.html" id="farmerDashboardLink">Farmer Dashboard</a></li>
+                        <li><a class="dropdown-item protected-link d-none" href="investor-dashboard.html" id="investorDashboardLink">Investor Dashboard</a></li>
                         <li><a class="dropdown-item protected-link d-none" href="#" id="logoutLink">Logout</a></li>
                     </ul>
                 </li>

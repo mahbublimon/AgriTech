@@ -19,30 +19,41 @@
     <div id="navbar-container"></div>
 
     <!-- Marketplace Header -->
-    <section class="marketplace-header py-5 bg-light">
+    <section class="marketplace-header py-5 bg-success text-white">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1>Farm Products Marketplace</h1>
-                    <p class="lead">Buy directly from farmers and agricultural producers</p>
+                    <h1 class="display-4 fw-bold">Farm Fresh Bangladesh</h1>
+                    <p class="lead">Buy directly from local farmers - Fair prices, fresh produce</p>
                 </div>
                 <div class="col-md-6">
-                    <div class="search-filter">
+                    <div class="search-filter bg-white p-3 rounded">
                         <div class="input-group mb-3">
                             <input type="text" id="productSearch" class="form-control" placeholder="Search products...">
                             <button class="btn btn-success" type="button" id="searchButton">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
-                        <div class="filter-options">
-                            <select class="form-select" id="categoryFilter">
-                                <option value="">All Categories</option>
-                                <option value="vegetables">Vegetables</option>
-                                <option value="fruits">Fruits</option>
-                                <option value="grains">Grains</option>
-                                <option value="dairy">Dairy</option>
-                                <option value="equipment">Equipment</option>
-                            </select>
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <select class="form-select" id="categoryFilter">
+                                    <option value="">All Categories</option>
+                                    <option value="vegetables">Vegetables</option>
+                                    <option value="fruits">Fruits</option>
+                                    <option value="rice">Rice</option>
+                                    <option value="fish">Fish</option>
+                                    <option value="spices">Spices</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" id="districtFilter">
+                                    <option value="">All Districts</option>
+                                    <option value="dhaka">Dhaka</option>
+                                    <option value="rangpur">Rangpur</option>
+                                    <option value="bogra">Bogra</option>
+                                    <option value="chittagong">Chittagong</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,13 +65,13 @@
     <section class="marketplace-main py-5">
         <div class="container">
             <div class="row" id="productContainer">
-                <!-- Products will be loaded here from database -->
+                <!-- Products loaded via JavaScript -->
             </div>
 
             <!-- Pagination -->
             <nav aria-label="Product pagination" class="mt-5">
                 <ul class="pagination justify-content-center" id="pagination">
-                    <!-- Pagination will be generated here -->
+                    <!-- Generated via JavaScript -->
                 </ul>
             </nav>
         </div>
@@ -68,18 +79,20 @@
 
     <!-- Product Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-success text-white">
                     <h5 class="modal-title" id="productModalTitle">Product Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="productModalBody">
-                    <!-- Product details will be loaded here -->
+                    <!-- Content loaded via JavaScript -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" id="addToCartBtn">Add to Cart</button>
+                    <button type="button" class="btn btn-success" id="addToCartBtn">
+                        <i class="fas fa-cart-plus me-2"></i> Add to Cart
+                    </button>
                 </div>
             </div>
         </div>
