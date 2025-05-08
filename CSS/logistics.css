@@ -140,3 +140,66 @@
     color: #198754;
     margin-right: 8px;
 }
+
+/* Map markers */
+.map-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.map-marker.major {
+    background: #198754;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.map-marker.minor {
+    background: #0d6efd;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.map-marker.moving {
+    background: #ffc107;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+    }
+}
+
+/* Tracking status colors */
+.badge-processing {
+    background-color: #6c757d;
+}
+
+.badge-intransit {
+    background-color: #0dcaf0;
+}
+
+.badge-delivered {
+    background-color: #198754;
+}
+
+.badge-delayed {
+    background-color: #fd7e14;
+}
+
+.badge-cancelled {
+    background-color: #dc3545;
+}

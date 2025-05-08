@@ -1,0 +1,63 @@
+/* Farmer Footer Styles */
+.farmer-footer {
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), 
+                url('../Images/footer-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    border-top: 3px solid #28a745;
+}
+
+.farmer-footer h5 {
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.farmer-footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #28a745;
+}
+
+.farmer-footer ul li a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.farmer-footer ul li a:hover {
+    color: #28a745 !important;
+    transform: translateX(5px);
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #28a745;
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .farmer-footer .col-md-6 {
+        text-align: center !important;
+    }
+    
+    .farmer-footer h5::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

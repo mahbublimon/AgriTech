@@ -1,0 +1,110 @@
+<footer class="investor-footer bg-dark text-white pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-lg-4 mb-4">
+                <h5 class="text-success mb-3">
+                    <i class="fas fa-leaf me-2"></i> AgriInvest
+                </h5>
+                <p class="small">
+                    Connecting investors with agricultural opportunities to empower farmers 
+                    and promote sustainable farming practices across Bangladesh.
+                </p>
+                <div class="social-icons mt-3">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h6 class="text-success">Investor Links</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="investor-dashboard.html" class="text-white small">Dashboard</a></li>
+                    <li class="mb-2"><a href="investor-loans.html" class="text-white small">Browse Loans</a></li>
+                    <li class="mb-2"><a href="investor-portfolio.html" class="text-white small">My Portfolio</a></li>
+                    <li class="mb-2"><a href="investor-payments.html" class="text-white small">Payments</a></li>
+                    <li class="mb-2"><a href="investor-profile.html" class="text-white small">Profile</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h6 class="text-success">Resources</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="investor-guides.html" class="text-white small">Investment Guides</a></li>
+                    <li class="mb-2"><a href="risk-assessment.html" class="text-white small">Risk Assessment</a></li>
+                    <li class="mb-2"><a href="faq.html" class="text-white small">FAQ</a></li>
+                    <li class="mb-2"><a href="blog.html" class="text-white small">Blog</a></li>
+                    <li class="mb-2"><a href="reports.html" class="text-white small">Annual Reports</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-lg-3 mb-4">
+                <h6 class="text-success">Contact Us</h6>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i> 123 Farmgate, Dhaka 1215</li>
+                    <li class="mb-2"><i class="fas fa-phone-alt text-success me-2"></i> +880 1712 345678</li>
+                    <li class="mb-2"><i class="fas fa-envelope text-success me-2"></i> investors@agritech.com</li>
+                    <li class="mb-2"><i class="fas fa-clock text-success me-2"></i> Sun-Thu: 9AM - 6PM</li>
+                </ul>
+                <button class="btn btn-outline-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#contactModal">
+                    <i class="fas fa-headset me-1"></i> Support
+                </button>
+            </div>
+        </div>
+
+        <hr class="bg-secondary">
+
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="small mb-0">&copy; 2023 AgriInvest. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <ul class="list-inline small mb-0">
+                    <li class="list-inline-item"><a href="privacy.html" class="text-white">Privacy Policy</a></li>
+                    <li class="list-inline-item mx-2">•</li>
+                    <li class="list-inline-item"><a href="terms.html" class="text-white">Terms of Service</a></li>
+                    <li class="list-inline-item mx-2">•</li>
+                    <li class="list-inline-item"><a href="disclaimer.html" class="text-white">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">Investor Support</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="supportForm">
+                    <div class="mb-3">
+                        <label for="supportSubject" class="form-label">Subject</label>
+                        <select class="form-select" id="supportSubject" required>
+                            <option value="" selected disabled>Select subject</option>
+                            <option>Investment Query</option>
+                            <option>Account Issue</option>
+                            <option>Payment Problem</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="supportMessage" class="form-label">Message</label>
+                        <textarea class="form-control" id="supportMessage" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-paper-plane me-2"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

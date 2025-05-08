@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investor Dashboard | AgriTech</title>
+    <title>Investor Dashboard | AgriInvest</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/investor-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/investordashboard.css">
 </head>
 <body>
-    <div id="navbar-container"></div>
+    <div id="investor-navbar-container"></div>
 
-    <!-- Investor Dashboard -->
-    <section class="investor-dashboard py-5">
+    <section class="investor-dashboard py-4">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <!-- Sidebar -->
-                    <div class="card mb-4">
+                <!-- Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="card sidebar-card">
                         <div class="card-header bg-success text-white">
                             <h5 class="mb-0">Investor Menu</h5>
                         </div>
@@ -28,51 +25,52 @@
                                 <i class="fas fa-tachometer-alt me-2"></i> Dashboard
                             </a>
                             <a href="investor-loans.html" class="list-group-item list-group-item-action">
-                                <i class="fas fa-hand-holding-usd me-2"></i> Loan Applications
+                                <i class="fas fa-search-dollar me-2"></i> Browse Loans
                             </a>
                             <a href="investor-portfolio.html" class="list-group-item list-group-item-action">
-                                <i class="fas fa-chart-pie me-2"></i> Investment Portfolio
+                                <i class="fas fa-chart-pie me-2"></i> My Portfolio
                             </a>
                             <a href="investor-payments.html" class="list-group-item list-group-item-action">
                                 <i class="fas fa-money-bill-wave me-2"></i> Payments
                             </a>
                             <a href="investor-profile.html" class="list-group-item list-group-item-action">
-                                <i class="fas fa-user-cog me-2"></i> Profile Settings
+                                <i class="fas fa-user-cog me-2"></i> Profile
                             </a>
                         </div>
                     </div>
                     
                     <!-- Quick Stats -->
-                    <div class="card mb-4">
+                    <div class="card">
                         <div class="card-header bg-white">
                             <h6 class="mb-0">Investment Summary</h6>
                         </div>
                         <div class="card-body">
                             <div class="d-flex justify-content-between mb-2">
-                                <span>Active Loans:</span>
-                                <span class="fw-bold" id="activeLoans">8</span>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Pending Applications:</span>
-                                <span class="fw-bold" id="pendingApplications">3</span>
+                                <span>Active Investments:</span>
+                                <span class="fw-bold" id="activeInvestments">0</span>
                             </div>
                             <div class="d-flex justify-content-between mb-2">
                                 <span>Total Invested:</span>
-                                <span class="fw-bold text-success" id="totalInvested">৳1,250,000</span>
+                                <span class="fw-bold text-success" id="totalInvested">৳0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Expected ROI:</span>
+                                <span class="fw-bold text-success" id="expectedROI">৳0</span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <span>Expected ROI:</span>
-                                <span class="fw-bold text-success" id="expectedROI">৳175,000</span>
+                                <span>Repayment Rate:</span>
+                                <span class="fw-bold" id="repaymentRate">0%</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Main Content -->
                 <div class="col-lg-9">
                     <!-- Dashboard Overview -->
                     <div class="card mb-4">
                         <div class="card-header bg-white">
-                            <h5 class="mb-0">Loan Applications Overview</h5>
+                            <h5 class="mb-0">Investment Opportunities</h5>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -80,8 +78,11 @@
                                     <div class="card h-100">
                                         <div class="card-body text-center">
                                             <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
-                                            <h5>Pending Applications</h5>
-                                            <p>Review new loan applications from farmers</p>
+                                            <h5>New Loan Requests</h5>
+                                            <p class="text-muted">Review loan applications from farmers</p>
+                                            <div class="mb-3">
+                                                <span class="badge bg-primary" id="pendingLoansCount">0 pending</span>
+                                            </div>
                                             <a href="investor-loans.html?status=pending" class="btn btn-outline-primary">View Applications</a>
                                         </div>
                                     </div>
@@ -89,30 +90,13 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="card h-100">
                                         <div class="card-body text-center">
-                                            <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
-                                            <h5>Approved Loans</h5>
-                                            <p>Track your active investments</p>
-                                            <a href="investor-loans.html?status=approved" class="btn btn-outline-success">View Loans</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="card h-100">
-                                        <div class="card-body text-center">
-                                            <i class="fas fa-chart-line fa-3x text-info mb-3"></i>
-                                            <h5>Investment Analytics</h5>
-                                            <p>Analyze your investment performance</p>
-                                            <a href="investor-analytics.html" class="btn btn-outline-info">View Analytics</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="card h-100">
-                                        <div class="card-body text-center">
-                                            <i class="fas fa-hand-holding-usd fa-3x text-warning mb-3"></i>
-                                            <h5>New Investment</h5>
-                                            <p>Fund a new agricultural project</p>
-                                            <a href="investor-new-fund.html" class="btn btn-outline-warning">Invest Now</a>
+                                            <i class="fas fa-hand-holding-usd fa-3x text-success mb-3"></i>
+                                            <h5>Quick Invest</h5>
+                                            <p class="text-muted">Fund pre-approved loans</p>
+                                            <div class="mb-3">
+                                                <span class="badge bg-success" id="preApprovedLoansCount">0 available</span>
+                                            </div>
+                                            <a href="investor-loans.html?status=pre_approved" class="btn btn-outline-success">Invest Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -120,11 +104,11 @@
                         </div>
                     </div>
                     
-                    <!-- Recent Applications -->
-                    <div class="card">
+                    <!-- Active Investments -->
+                    <div class="card mb-4">
                         <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Recent Loan Applications</h5>
-                            <a href="investor-loans.html" class="btn btn-sm btn-success">View All</a>
+                            <h5 class="mb-0">Active Investments</h5>
+                            <a href="investor-portfolio.html" class="btn btn-sm btn-success">View Portfolio</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -134,13 +118,50 @@
                                             <th>Loan ID</th>
                                             <th>Farmer</th>
                                             <th>Amount</th>
-                                            <th>Purpose</th>
+                                            <th>ROI</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="recentLoansTable">
-                                        <!-- Loan applications will be loaded here -->
+                                    <tbody id="activeInvestmentsTable">
+                                        <!-- Data will be loaded here -->
+                                        <tr>
+                                            <td colspan="6" class="text-center py-4">
+                                                <div class="spinner-border spinner-border-sm"></div>
+                                                <p class="mt-2 mb-0">Loading investments...</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Payments -->
+                    <div class="card">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Recent Payments</h5>
+                            <a href="investor-payments.html" class="btn btn-sm btn-success">View All</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Loan ID</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentPaymentsTable">
+                                        <!-- Data will be loaded here -->
+                                        <tr>
+                                            <td colspan="4" class="text-center py-4">
+                                                <div class="spinner-border spinner-border-sm"></div>
+                                                <p class="mt-2 mb-0">Loading payments...</p>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -153,8 +174,25 @@
 
     <div id="footer-container"></div>
 
+    <!-- Investment Modal -->
+    <div class="modal fade" id="investmentModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Make Investment</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="investmentModalBody">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="investor-footer-container"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../JavaScript/script.js"></script>
-    <script src="../JavaScript/investor-dashboard.js"></script>
+    <script src="JavaScript/investordashboard.js"></script>
+    <script src="JavaScript/investorscript.js"></script>
 </body>
 </html>

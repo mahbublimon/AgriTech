@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,67 +9,192 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/auth.css">
-    <style>
-        body {
-            padding-top: 0 !important;
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/register.css">
 </head>
+
 <body>
     <div id="navbar-container"></div>
-    
+
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-header">
                 <h2 class="auth-title">Create Account</h2>
-                <p class="auth-subtitle">Join thousands of farmers growing their business</p>
+                <p class="auth-subtitle">Join our agricultural community</p>
             </div>
-            
+
             <form id="registerForm" class="auth-form">
-                <div class="mb-3 form-group">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
-                </div>
-                
-                <div class="mb-3 form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-                </div>
-                
-                <div class="mb-3 form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <div class="input-group">
-                        <input type="password" class="form-control" id="password" placeholder="Create a password" required>
-                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                            <i class="fas fa-eye"></i>
-                        </button>
+                <!-- Step 1: Account Type Selection -->
+                <div class="form-step active" id="step1">
+                    <h5 class="step-title">Select Account Type</h5>
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3">
+                            <input type="radio" class="btn-check" name="userType" id="farmer" value="farmer" autocomplete="off" required>
+                            <label class="btn btn-outline-success w-100 py-3" for="farmer">
+                                <i class="fas fa-tractor fa-2x mb-2"></i><br>
+                                <span>Farmer</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <input type="radio" class="btn-check" name="userType" id="investor" value="investor" autocomplete="off">
+                            <label class="btn btn-outline-success w-100 py-3" for="investor">
+                                <i class="fas fa-hand-holding-usd fa-2x mb-2"></i><br>
+                                <span>Investor</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <input type="radio" class="btn-check" name="userType" id="user" value="user" autocomplete="off">
+                            <label class="btn btn-outline-success w-100 py-3" for="user">
+                                <i class="fas fa-user fa-2x mb-2"></i><br>
+                                <span>Regular User</span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-text">Must be at least 8 characters</div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-success next-btn">Next</button>
+                    </div>
                 </div>
-                
-                <div class="mb-3 form-group">
-                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+
+                <!-- Step 2: Basic Information -->
+                <div class="form-step" id="step2">
+                    <h5 class="step-title">Basic Information</h5>
+                    <div class="mb-3 form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-text">Must be at least 8 characters</div>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+                            <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-secondary prev-btn">Back</button>
+                        <button type="button" class="btn btn-success next-btn">Next</button>
+                    </div>
                 </div>
-                
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="terms" required>
-                    <label class="form-check-label" for="terms">I agree to the <a href="#" class="text-success">Terms of Service</a> and <a href="#" class="text-success">Privacy Policy</a></label>
+
+                <!-- Step 3: Role-Specific Information -->
+                <div class="form-step" id="step3">
+                    <h5 class="step-title">Additional Information</h5>
+
+                    <!-- Farmer Fields -->
+                    <div class="role-fields" id="farmerFields">
+                        <div class="mb-3 form-group">
+                            <label for="farmLocation" class="form-label">Farm Location</label>
+                            <input type="text" class="form-control" id="farmLocation" placeholder="Enter farm location">
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="farmSize" class="form-label">Farm Size (acres)</label>
+                            <input type="number" class="form-control" id="farmSize" placeholder="Enter farm size">
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="landDocument" class="form-label">Land Ownership Document</label>
+                            <input type="file" class="form-control" id="landDocument" accept=".pdf,.jpg,.png">
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="nidFront" class="form-label">NID Front Side</label>
+                            <input type="file" class="form-control" id="nidFront" accept=".pdf,.jpg,.png" required>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="nidBack" class="form-label">NID Back Side</label>
+                            <input type="file" class="form-control" id="nidBack" accept=".pdf,.jpg,.png" required>
+                        </div>
+                    </div>
+
+                    <!-- Investor Fields -->
+                    <div class="role-fields" id="investorFields">
+                        <div class="mb-3 form-group">
+                            <label for="companyName" class="form-label">Company Name</label>
+                            <input type="text" class="form-control" id="companyName" placeholder="Enter company name">
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="investmentRange" class="form-label">Investment Range</label>
+                            <select class="form-select" id="investmentRange">
+                                <option value="">Select investment range</option>
+                                <option value="1-10">$1,000 - $10,000</option>
+                                <option value="10-50">$10,000 - $50,000</option>
+                                <option value="50-100">$50,000 - $100,000</option>
+                                <option value="100+">$100,000+</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="companyDocument" class="form-label">Company Registration Document</label>
+                            <input type="file" class="form-control" id="companyDocument" accept=".pdf,.jpg,.png">
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label for="investorNid" class="form-label">NID (National ID)</label>
+                            <input type="file" class="form-control" id="investorNid" accept=".pdf,.jpg,.png" required>
+                        </div>
+                    </div>
+
+                    <!-- Regular User Fields -->
+                    <div class="role-fields" id="userFields">
+                        <div class="mb-3 form-group">
+                            <label for="interests" class="form-label">Areas of Interest</label>
+                            <select class="form-select" id="interests" multiple>
+                                <option value="organic">Organic Farming</option>
+                                <option value="tech">Agricultural Technology</option>
+                                <option value="market">Market Prices</option>
+                                <option value="education">Farming Education</option>
+                            </select>
+                            <div class="form-text">Hold Ctrl to select multiple options</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="terms" required>
+                        <label class="form-check-label" for="terms">I agree to the <a href="#" class="text-success">Terms of Service</a> and <a href="#" class="text-success">Privacy Policy</a></label>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-secondary prev-btn">Back</button>
+                        <button type="submit" class="btn btn-success">Create Account</button>
+                    </div>
                 </div>
-                
-                <button type="submit" class="btn btn-success w-100 auth-btn">Create Account</button>
             </form>
-            
+
             <div class="auth-footer">
                 <p>Already have an account? <a href="login.html" class="text-success">Sign in</a></p>
             </div>
         </div>
     </div>
-    
+
     <div id="footer-container"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="JavaScript/auth.js"></script>
+    <script src="JavaScript/register.js"></script>
     <script src="JavaScript/script.js"></script>
+    <div id="notification" class="position-fixed top-0 start-50 translate-middle-x mt-4" style="z-index: 9999;"></div>
+
 </body>
+
 </html>

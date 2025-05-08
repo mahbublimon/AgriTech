@@ -1,0 +1,97 @@
+:root {
+    --primary-color: #28a745;
+    --secondary-color: #f8f9fa;
+    --accent-color: #ffc107;
+    --dark-color: #343a40;
+    --light-gray: #f5f5f5;
+}
+
+.add-product {
+    background-color: var(--light-gray);
+    min-height: calc(100vh - 120px);
+}
+
+.product-form-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.product-form-card .card-header {
+    background-color: white;
+    border-bottom: 2px solid var(--light-gray);
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.btn-submit {
+    background: var(--primary-color);
+    border: none;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-submit:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+#imagePreviewContainer {
+    min-height: 100px;
+}
+
+.image-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    position: relative;
+}
+
+.image-preview:hover {
+    border-color: var(--primary-color);
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.remove-image-btn:hover {
+    background: rgba(255,0,0,0.8);
+}
+
+/* Form validation styles */
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .add-product {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .product-form-card {
+        border-radius: 0;
+    }
+}

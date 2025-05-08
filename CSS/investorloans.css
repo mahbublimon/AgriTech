@@ -1,0 +1,101 @@
+/* Main Styles */
+.loan-applications {
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 120px);
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+.list-group-item {
+    border-left: none;
+    border-right: none;
+    padding: 12px 15px;
+    transition: all 0.3s;
+}
+
+.list-group-item:first-child {
+    border-top: none;
+}
+
+.list-group-item.active {
+    background-color: #28a745;
+    color: white;
+    border-color: rgba(0, 0, 0, 0.125);
+}
+
+.list-group-item:hover:not(.active) {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+/* Table Styles */
+.table-hover tbody tr:hover {
+    background-color: rgba(40, 167, 69, 0.05);
+}
+
+.table th {
+    font-weight: 600;
+    color: #495057;
+    border-top: none;
+}
+
+/* Status Badges */
+.badge-pending {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge-approved {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-rejected {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge-disbursed {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.badge-completed {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Modal Styles */
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .loan-applications {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    
+    .table-responsive {
+        border: none;
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+}

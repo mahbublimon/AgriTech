@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+        <!-- Brand Logo -->
+        <a class="navbar-brand fw-bold" href="investor-dashboard.html">
+            <i class="fas fa-leaf me-2"></i> AgriInvest
+        </a>
+        
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#investorNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Navigation Items -->
+        <div class="collapse navbar-collapse" id="investorNavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="investor-dashboard.html">
+                        <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="investor-loans.html">
+                        <i class="fas fa-search-dollar me-1"></i> Browse Loans
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="investor-portfolio.html">
+                        <i class="fas fa-chart-pie me-1"></i> Portfolio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="investor-payments.html">
+                        <i class="fas fa-money-bill-wave me-1"></i> Payments
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- Right Side Items -->
+            <ul class="navbar-nav ms-auto">
+                <!-- Notifications Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge bg-danger notification-badge d-none" id="notificationCount">0</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li class="dropdown-header">Notifications</li>
+                        <div id="notificationList" class="px-2 py-1">
+                            <div class="text-center py-3">
+                                <div class="spinner-border spinner-border-sm"></div>
+                                <p class="mt-2 mb-0 small">Loading notifications...</p>
+                            </div>
+                        </div>
+                        <li><a class="dropdown-item text-center" href="investor-notifications.html">View All</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Profile Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
+                        <img id="investorProfilePic" src="../images/default-profile.jpg" class="rounded-circle" width="30" height="30">
+                        <span class="ms-2 d-none d-lg-inline" id="investorName">Investor</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li class="dropdown-header">
+                            <div class="d-flex align-items-center">
+                                <img id="investorProfilePicSm" src="../images/default-profile.jpg" class="rounded-circle me-2" width="40" height="40">
+                                <div>
+                                    <h6 class="mb-0" id="investorNameDropdown">Loading...</h6>
+                                    <small class="text-muted">Investor Account</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="investor-profile.html"><i class="fas fa-user-cog me-2"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="investor-settings.html"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="investorLogoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

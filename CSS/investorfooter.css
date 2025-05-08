@@ -1,0 +1,64 @@
+.investor-footer {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a;
+}
+
+.investor-footer a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.investor-footer a:hover {
+    color: #28a745 !important;
+}
+
+.investor-footer h5, 
+.investor-footer h6 {
+    font-weight: 600;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #28a745;
+    transform: translateY(-3px);
+}
+
+.list-unstyled li {
+    padding: 3px 0;
+}
+
+.list-unstyled a {
+    display: inline-block;
+    padding: 2px 0;
+}
+
+.list-inline-item {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .investor-footer .col-lg-4,
+    .investor-footer .col-lg-3 {
+        margin-bottom: 1.5rem;
+    }
+    
+    .text-md-start, 
+    .text-md-end {
+        text-align: center !important;
+    }
+    
+    .list-inline {
+        justify-content: center;
+    }
+}

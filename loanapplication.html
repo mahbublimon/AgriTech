@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application | AgriTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/loanapplication.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <section class="loan-application py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card loan-form-card">
+                        <div class="card-header bg-success text-white">
+                            <h4 class="mb-0"><i class="fas fa-hand-holding-usd me-2"></i> Farming Loan Application</h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- Progress Steps -->
+                            <div class="progress-steps mb-4">
+                                <div class="step active" id="step1">
+                                    <div class="step-number">1</div>
+                                    <div class="step-label">Loan Details</div>
+                                </div>
+                                <div class="step" id="step2">
+                                    <div class="step-number">2</div>
+                                    <div class="step-label">Farm Information</div>
+                                </div>
+                                <div class="step" id="step3">
+                                    <div class="step-number">3</div>
+                                    <div class="step-label">Documents</div>
+                                </div>
+                                <div class="step" id="step4">
+                                    <div class="step-number">4</div>
+                                    <div class="step-label">Review & Submit</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Form Sections -->
+                            <form id="loanApplicationForm">
+                                <!-- Step 1: Loan Details -->
+                                <div class="form-section active" id="section1">
+                                    <div class="loan-calculator mb-4">
+                                        <h5><i class="fas fa-calculator me-2"></i> Loan Calculator</h5>
+                                        <div class="form-group">
+                                            <label for="loanPurpose" class="form-label">Loan Purpose*</label>
+                                            <select class="form-select" id="loanPurpose" required>
+                                                <option value="" selected disabled>Select purpose</option>
+                                                <!-- Options will be loaded from database -->
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="loanAmount" class="form-label">Loan Amount (৳)*</label>
+                                            <input type="range" class="form-range" id="loanAmountSlider" min="5000" max="200000" step="1000" value="50000">
+                                            <div class="d-flex justify-content-between">
+                                                <small>5,000৳</small>
+                                                <small>200,000৳</small>
+                                            </div>
+                                            <input type="number" class="form-control mt-2" id="loanAmountInput" value="50000" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="repaymentPeriod" class="form-label">Repayment Period*</label>
+                                            <select class="form-select" id="repaymentPeriod" required>
+                                                <!-- Options will be loaded from database -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="loan-summary">
+                                        <h5><i class="fas fa-file-invoice-dollar me-2"></i> Loan Summary</h5>
+                                        <div class="summary-item">
+                                            <span class="label">Loan Amount:</span>
+                                            <span class="value" id="summaryAmount">50,000৳</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="label">Interest Rate:</span>
+                                            <span class="value" id="interestRate">12%</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="label">Repayment Period:</span>
+                                            <span class="value" id="summaryPeriod">6 months</span>
+                                        </div>
+                                        <div class="summary-item total">
+                                            <span class="label">Monthly Payment:</span>
+                                            <span class="value" id="monthlyPayment">8,933৳</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 2: Farm Information -->
+                                <div class="form-section" id="section2">
+                                    <div class="form-group">
+                                        <label for="cropType" class="form-label">Primary Crop*</label>
+                                        <select class="form-select" id="cropType" required>
+                                            <option value="" selected disabled>Select crop</option>
+                                            <!-- Options will be loaded from database -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="landSize" class="form-label">Land Size (acre)*</label>
+                                        <input type="number" class="form-control" id="landSize" step="0.01" min="0.1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="district" class="form-label">District*</label>
+                                        <select class="form-select" id="district" required>
+                                            <option value="" selected disabled>Select district</option>
+                                            <!-- Options will be loaded from database -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="harvestDate" class="form-label">Expected Harvest Date*</label>
+                                        <input type="date" class="form-control" id="harvestDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Previous Loan Experience</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="previousLoan" id="previousLoanYes" value="yes">
+                                            <label class="form-check-label" for="previousLoanYes">Yes</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="previousLoan" id="previousLoanNo" value="no" checked>
+                                            <label class="form-check-label" for="previousLoanNo">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 3: Documents -->
+                                <div class="form-section" id="section3">
+                                    <div class="alert alert-info">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        Please upload clear copies of the required documents
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">National ID Card (Front & Back)*</label>
+                                        <div class="file-upload" id="nidUpload">
+                                            <i class="fas fa-id-card fa-2x mb-3"></i>
+                                            <p>Click to upload NID front and back</p>
+                                            <small class="text-muted">Max 2MB each (JPG, PNG or PDF)</small>
+                                            <input type="file" id="nidFront" accept="image/*,.pdf" style="display: none;" required>
+                                            <input type="file" id="nidBack" accept="image/*,.pdf" style="display: none;" required>
+                                        </div>
+                                        <div id="nidFilesInfo" class="mt-2"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Land Ownership Document*</label>
+                                        <div class="file-upload" id="landDocUpload">
+                                            <i class="fas fa-file-contract fa-2x mb-3"></i>
+                                            <p>Click to upload land document</p>
+                                            <small class="text-muted">Max 2MB (JPG, PNG or PDF)</small>
+                                            <input type="file" id="landDoc" accept="image/*,.pdf" style="display: none;" required>
+                                        </div>
+                                        <div id="landDocInfo" class="mt-2"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Recent Crop Photos (Optional)</label>
+                                        <div class="file-upload" id="cropPhotosUpload">
+                                            <i class="fas fa-camera fa-2x mb-3"></i>
+                                            <p>Click to upload crop photos</p>
+                                            <small class="text-muted">Max 3 images, 2MB each</small>
+                                            <input type="file" id="cropPhotos" accept="image/*" style="display: none;" multiple>
+                                        </div>
+                                        <div id="cropPhotosInfo" class="mt-2"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 4: Review & Submit -->
+                                <div class="form-section" id="section4">
+                                    <div class="alert alert-success">
+                                        <i class="fas fa-check-circle me-2"></i>
+                                        <strong>Your loan is pre-approved!</strong> Final approval after document verification.
+                                    </div>
+                                    <h5 class="mb-4">Review Your Application</h5>
+                                    <div class="loan-summary mb-4">
+                                        <h5><i class="fas fa-info-circle me-2"></i> Loan Details</h5>
+                                        <div class="summary-item">
+                                            <span class="label">Loan Amount:</span>
+                                            <span class="value" id="reviewAmount">50,000৳</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="label">Purpose:</span>
+                                            <span class="value" id="reviewPurpose">Seeds & Fertilizers</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="label">Repayment:</span>
+                                            <span class="value" id="reviewRepayment">6 months (8,933৳/month)</span>
+                                        </div>
+                                    </div>
+                                    <div class="loan-summary mb-4">
+                                        <h5><i class="fas fa-tractor me-2"></i> Farm Details</h5>
+                                        <div class="summary-item">
+                                            <span class="label">Crop Type:</span>
+                                            <span class="value" id="reviewCrop">Rice</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="label">Land Size:</span>
+                                            <span class="value" id="reviewLand">2.5 acres</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span class="label">Location:</span>
+                                            <span class="value" id="reviewLocation">Dhaka</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                        <label class="form-check-label" for="agreeTerms">
+                                            I agree to the <a href="#" target="_blank">Terms & Conditions</a> and confirm all information is correct.
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Navigation Buttons -->
+                                <div class="form-footer mt-4">
+                                    <button type="button" class="btn btn-outline-secondary" id="prevBtn" disabled>
+                                        <i class="fas fa-arrow-left me-2"></i> Back
+                                    </button>
+                                    <button type="button" class="btn btn-success" id="nextBtn">
+                                        Next <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                    <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+                                        <i class="fas fa-paper-plane me-2"></i> Submit Application
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i>Application Submitted</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your loan application has been submitted successfully!</p>
+                    <p class="mb-0">You will receive a confirmation email shortly. Our team will review your application and contact you within 3 business days.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="farmer-dashboard.html" class="btn btn-success">Go to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JavaScript/loanapplication.js"></script>
+    <script src="JavaScript/farmerscript.js"></script>
+</body>
+</html>

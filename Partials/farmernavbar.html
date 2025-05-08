@@ -1,0 +1,99 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top farmer-navbar">
+    <div class="container">
+        <!-- Logo with farmer indicator -->
+        <a class="navbar-brand fw-bold" href="farmerdashboard.html">
+            <i class="fas fa-tractor me-2"></i>AgriTech Farmer
+        </a>
+        
+        <!-- Mobile toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#farmerNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Navigation items -->
+        <div class="collapse navbar-collapse" id="farmerNavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="farmerdashboard.html">
+                        <i class="fas fa-home me-1"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-box-open me-1"></i> Products
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="farmerproducts.html">My Products</a></li>
+                        <li><a class="dropdown-item" href="farmeraddproduct.html">Add New Product</a></li>
+                        <li><a class="dropdown-item" href="farmerproductanalytics.html">Product Analytics</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="farmerders.html">
+                        <i class="fas fa-shopping-bag me-1"></i> Orders
+                        <span class="badge bg-warning ms-1 notification-badge d-none" id="ordersBadge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="farmerloan.html">
+                        <i class="fas fa-hand-holding-usd me-1"></i> Loans
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- Right side items -->
+            <ul class="navbar-nav ms-auto">
+                <!-- Notifications Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge bg-danger notification-badge d-none" id="notificationsBadge"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end notification-dropdown">
+                        <li class="dropdown-header d-flex justify-content-between">
+                            <span>Notifications</span>
+                            <a href="#" class="mark-all-read">Mark all as read</a>
+                        </li>
+                        <div class="notification-list" id="notificationList">
+                            <!-- Notifications will be loaded here -->
+                            <div class="text-center py-3">
+                                <div class="spinner-border text-success spinner-border-sm"></div>
+                                <p class="mt-2 mb-0">Loading notifications...</p>
+                            </div>
+                        </div>
+                        <li class="dropdown-footer">
+                            <a href="farmer-notifications.html" class="dropdown-item text-center">View All Notifications</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- Profile Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
+                        <div class="profile-pic-container">
+                            <img src="../Images/default-profile.jpg" alt="Profile" class="profile-pic" id="profilePic">
+                            <span class="profile-name ms-2" id="profileName">Loading...</span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li class="dropdown-header">
+                            <div class="d-flex align-items-center">
+                                <img src="../Images/default-profile.jpg" alt="Profile" class="profile-pic-sm me-2" id="profilePicSm">
+                                <div>
+                                    <h6 class="mb-0" id="profileNameDropdown">Loading...</h6>
+                                    <small class="text-muted" id="profileRole">Farmer</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="farmer-profile.html"><i class="fas fa-user-cog me-2"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="farmer-settings.html"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                        <li><a class="dropdown-item" href="farmer-help.html"><i class="fas fa-question-circle me-2"></i> Help</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

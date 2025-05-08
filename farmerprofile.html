@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | AgriTech Farmer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/farmerprofile.css">
+</head>
+<body>
+    <div id="farmer-navbar-container"></div>
+    <div id="farmer-footer-container"></div>
+
+    <div class="profile-container">
+        <div class="container py-5">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="card profile-sidebar">
+                        <div class="card-body text-center">
+                            <div class="profile-picture-container mb-3">
+                                <img id="profilePicture" src="../images/default-profile.jpg" alt="Profile Picture" class="profile-picture">
+                                <label for="profileImageUpload" class="profile-picture-upload">
+                                    <i class="fas fa-camera"></i>
+                                </label>
+                                <input type="file" id="profileImageUpload" accept="image/*" style="display: none;">
+                            </div>
+                            <h5 id="farmerName" class="mb-1">Loading...</h5>
+                            <p class="text-muted small mb-3" id="farmerLocation">Loading...</p>
+                            <div class="verification-badge mb-3" id="verificationBadge">
+                                <i class="fas fa-user-clock me-1"></i> Not Verified
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item active">
+                                <i class="fas fa-user-circle me-2"></i> Profile
+                            </li>
+                            <li class="list-group-item">
+                                <a href="farmer-settings.html" class="text-decoration-none">
+                                    <i class="fas fa-cog me-2"></i> Settings
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="farmer-change-password.html" class="text-decoration-none">
+                                    <i class="fas fa-lock me-2"></i> Change Password
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="farmer-verification.html" class="text-decoration-none">
+                                    <i class="fas fa-id-card me-2"></i> Account Verification
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-lg-9">
+                    <div class="card profile-content">
+                        <div class="card-header bg-white">
+                            <h4 class="mb-0"><i class="fas fa-user-circle me-2"></i> My Profile</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="profileForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">First Name*</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name*</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email*</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label">Phone*</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="district" class="form-label">District*</label>
+                                        <select class="form-select" id="district" required>
+                                            <option value="">Select District</option>
+                                            <!-- Districts will be loaded from database -->
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="nidNumber" class="form-label">NID Number</label>
+                                        <input type="text" class="form-control" id="nidNumber">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="address" class="form-label">Address</label>
+                                        <textarea class="form-control" id="address" rows="2"></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="farmSize" class="form-label">Farm Size (acre)</label>
+                                        <input type="number" class="form-control" id="farmSize" min="0" step="0.01">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="experience" class="form-label">Farming Experience (years)</label>
+                                        <input type="number" class="form-control" id="experience" min="0">
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-save me-2"></i> Update Profile
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Account Verification Section (only shown if not verified) -->
+                    <div class="card mt-4 verification-card d-none" id="verificationSection">
+                        <div class="card-header bg-warning text-white">
+                            <h5 class="mb-0"><i class="fas fa-id-card me-2"></i>Account Verification Required</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>To access all features of AgriTech Farmer, please verify your account by submitting your National ID details.</p>
+                            <a href="farmer-verification.html" class="btn btn-warning">
+                                <i class="fas fa-id-card me-2"></i> Verify Account Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i>Success</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your profile has been updated successfully!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JavaScript/farmerscript.js"></script>
+    <script src="JavaScript/farmerprofile.js"></script>
+</body>
+</html>

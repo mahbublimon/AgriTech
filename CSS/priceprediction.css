@@ -1,77 +1,221 @@
 /* Price Prediction Page Styles */
+:root {
+    --agri-green: #28a745;
+    --agri-green-light: rgba(40, 167, 69, 0.1);
+    --agri-dark: #1e5631;
+}
+
+/* Hero Section */
 .prediction-hero {
-    background-color: #28a745;
+    background: linear-gradient(135deg, var(--agri-green), var(--agri-dark));
     color: white;
-    padding: 5rem 0;
+    padding: 6rem 0 5rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .prediction-hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
 
 .prediction-hero p {
-    font-size: 1.25rem;
-    max-width: 500px;
+    font-size: 1.3rem;
+    max-width: 600px;
+    opacity: 0.9;
 }
 
+.prediction-hero .btn-light {
+    background: rgba(255,255,255,0.9);
+    color: var(--agri-dark);
+    font-weight: 500;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.prediction-hero .btn-light:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Prediction Card */
 .prediction-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 2.5rem;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-top: -80px;
+    position: relative;
+    z-index: 2;
 }
 
+.section-header h2 {
+    font-weight: 700;
+    color: var(--agri-dark);
+}
+
+.section-header p {
+    color: #6c757d;
+}
+
+.form-select, .form-control {
+    padding: 0.75rem 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: var(--agri-green);
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}
+
+.btn-success {
+    background-color: var(--agri-green);
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: var(--agri-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Results Section */
 .result-card {
     background: white;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.predicted-price {
-    background: rgba(40, 167, 69, 0.1);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-    text-align: center;
-}
-
-.predicted-price h3 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #28a745;
-    margin: 0.5rem 0;
-}
-
-.best-time {
-    background: #f8f9fa;
-    padding: 0.75rem;
-    border-radius: 6px;
+.crop-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 1.5rem;
 }
 
-.price-chart-container {
-    height: 250px;
-    margin-top: 1rem;
+.crop-badge span:first-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--agri-dark);
 }
 
-.recommendations {
+.region-badge {
+    background: var(--agri-green-light);
+    color: var(--agri-green);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.predicted-price {
+    background: var(--agri-green-light);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.predicted-price h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--agri-green);
+    margin: 0.5rem 0;
+    line-height: 1;
+}
+
+.predicted-price span {
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+.best-time-card {
     background: #f8f9fa;
-    padding: 1.5rem;
+    padding: 1.25rem;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.recommendations ul {
-    padding-left: 1.5rem;
+.best-time-card i {
+    font-size: 1.5rem;
+    color: var(--agri-green);
+}
+
+.best-time-card small {
+    display: block;
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.best-time-value {
+    font-weight: 600;
+    color: var(--agri-dark);
+    margin-top: 0.25rem;
+}
+
+.price-chart-container {
+    height: 280px;
+    position: relative;
+}
+
+/* Recommendations */
+.recommendations-section {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.recommendations-section h5 {
+    color: var(--agri-dark);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.recommendations-section h5 i {
+    color: #ffc107;
+}
+
+.recommendations-list {
+    list-style-type: none;
+    padding-left: 0;
     margin-bottom: 0;
 }
 
-.recommendations li {
-    margin-bottom: 0.5rem;
+.recommendations-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    align-items: flex-start;
 }
 
+.recommendations-list li:last-child {
+    border-bottom: none;
+}
+
+.recommendations-list li::before {
+    content: "•";
+    color: var(--agri-green);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.5em;
+}
+
+/* How It Works */
 .work-card {
     background: white;
     border-radius: 10px;
@@ -80,6 +224,7 @@
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.03);
 }
 
 .work-card:hover {
@@ -88,27 +233,68 @@
 }
 
 .work-icon {
-    width: 70px;
-    height: 70px;
-    background: rgba(40, 167, 69, 0.1);
+    width: 80px;
+    height: 80px;
+    background: var(--agri-green-light);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
-    color: #28a745;
-    font-size: 1.75rem;
+    color: var(--agri-green);
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.work-card:hover .work-icon {
+    background: var(--agri-green);
+    color: white;
+}
+
+/* Market Trends */
+.market-trends {
+    background: white;
+    padding: 5rem 0;
+}
+
+.market-trends h2 {
+    color: var(--agri-dark);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.trends-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 2rem;
+}
+
+.trends-list li {
+    padding: 0.75rem 0;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.trends-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.25rem;
+    width: 10px;
+    height: 10px;
+    background: var(--agri-green);
+    border-radius: 50%;
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .prediction-hero {
-        padding: 3rem 0;
         text-align: center;
+        padding: 5rem 0 4rem;
     }
     
     .prediction-hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .prediction-hero p {
@@ -116,12 +302,42 @@
         margin-right: auto;
     }
     
+    .prediction-card {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .predicted-price h3 {
+        font-size: 2.5rem;
+    }
+    
+    .price-chart-container {
+        height: 250px;
+        margin-top: 2rem;
+    }
+    
+    .result-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .prediction-hero {
+        padding: 4rem 0 3rem;
+    }
+    
+    .prediction-hero h1 {
+        font-size: 1.8rem;
+    }
+    
     .predicted-price h3 {
         font-size: 2rem;
     }
     
-    .price-chart-container {
-        height: 200px;
-        margin-top: 2rem;
+    .work-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.75rem;
     }
 }

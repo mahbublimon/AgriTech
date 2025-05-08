@@ -1,14 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
+    // DOM Elements with null checks
     const productContainer = document.getElementById('productContainer');
-    const pagination = document.getElementById('pagination');
-    const productModal = new bootstrap.Modal(document.getElementById('productModal'));
-    const productModalTitle = document.getElementById('productModalTitle');
-    const productModalBody = document.getElementById('productModalBody');
-    const productSearch = document.getElementById('productSearch');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const districtFilter = document.getElementById('districtFilter');
-    const cartBadge = document.getElementById('cartBadge');
+    if (!productContainer) {
+        console.error('Product container not found');
+        return;
+    }
+
+    const pagination = document.getElementById('pagination') || { innerHTML: '' };
+    const productModalElement = document.getElementById('productModal');
+    if (!productModalElement) {
+        console.error('Product modal not found');
+        return;
+    }
+    const productModal = new bootstrap.Modal(productModalElement);
+    const productModalTitle = document.getElementById('productModalTitle') || { textContent: '' };
+    const productModalBody = document.getElementById('productModalBody') || { innerHTML: '' };
+    const productSearch = document.getElementById('productSearch') || { value: '', addEventListener: () => {} };
+    const categoryFilter = document.getElementById('categoryFilter') || { value: '', addEventListener: () => {} };
+    const districtFilter = document.getElementById('districtFilter') || { value: '', addEventListener: () => {} };
+    const cartBadge = document.getElementById('cartBadge') || { textContent: '', classList: { add: () => {}, remove: () => {} } };
     
     // Current page and items per page
     let currentPage = 1;
@@ -29,108 +39,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Bangladeshi agricultural products dataset with images
-    const productDatabase = [
-        {
-            id: 1,
-            name: "Fresh Aromatic Rice (Chinigura)",
-            description: "Premium quality Chinigura rice, known for its distinctive aroma and fine grains. Grown organically in the fertile fields of Dinajpur.",
-            price: 120.00,
-            category: "rice",
-            district: "dinajpur",
-            seller: "Abdul Karim",
-            sellerId: 101,
-            rating: 5,
-            stock: 150,
-            image: "Images/products/chinigura-rice.jpg",
-            specs: {
-                type: "Long Grain",
-                weight: "5kg bag",
-                harvest: "November 2023",
-                organic: "Yes"
-            }
-        },
-        {
-            id: 2,
-            name: "Mango (Himsagar)",
-            description: "Sweet and juicy Himsagar mangoes from Rajshahi. Each mango is hand-picked at perfect ripeness.",
-            price: 250.00,
-            category: "fruits",
-            district: "rajshahi",
-            seller: "Rahima Begum",
-            sellerId: 102,
-            rating: 4,
-            stock: 75,
-            image: "Images/products/himsagar-mango.jpg",
-            specs: {
-                type: "Himsagar",
-                weight: "1kg (approx 3-4 pieces)",
-                harvest: "June 2023",
-                organic: "No"
-            }
-        },
-        {
-            id: 3,
-            name: "Hilsa Fish (Ilish)",
-            description: "Fresh Padma river Hilsa, caught same morning. Perfect for traditional Bengali dishes.",
-            price: 1500.00,
-            category: "fish",
-            district: "chandpur",
-            seller: "Fisherman's Cooperative",
-            sellerId: 103,
-            rating: 5,
-            stock: 20,
-            image: "Images/products/hilsa-fish.jpg",
-            specs: {
-                type: "Freshwater",
-                weight: "1kg (approx 1 fish)",
-                preserved: "Ice chilled",
-                origin: "Padma River"
-            }
-        },
-        {
-            id: 4,
-            name: "Red Lentils (Masoor Dal)",
-            description: "High protein red lentils grown in the northern regions of Bangladesh. Perfect for dal preparations.",
-            price: 95.00,
-            category: "rice",
-            district: "rangpur",
-            seller: "Northern Farmers Group",
-            sellerId: 104,
-            rating: 4,
-            stock: 200,
-            image: "Images/products/red-lentils.jpg",
-            specs: {
-                type: "Split Lentils",
-                weight: "1kg packet",
-                harvest: "March 2023",
-                organic: "Yes"
-            }
-        }
-    ];
-
-    // Fetch products (simulating database)
+    // Fetch products from API
     async function fetchProducts() {
         try {
-            // Simulate API call delay
-            await new Promise(resolve => setTimeout(resolve, 500));
+            // Show loading state
+            productContainer.innerHTML = `
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3">Loading products...</p>
+                </div>
+            `;
             
-            // Clone our product database
-            products = JSON.parse(JSON.stringify(productDatabase));
+            // In a real implementation, this would be an API call to your backend
+            const response = await fetch('/api/products/approved'); // Endpoint to get approved products
+            if (!response.ok) throw new Error('Failed to fetch products');
             
-            // In a real app, we would add more products from an API
-            // Let's duplicate our products to simulate more inventory
-            const additionalProducts = [];
-            for (let i = 0; i < 4; i++) {
-                productDatabase.forEach(prod => {
-                    const newProd = JSON.parse(JSON.stringify(prod));
-                    newProd.id = (productDatabase.length + 1) + i * productDatabase.length + prod.id;
-                    newProd.price = (parseFloat(prod.price) * (1 + Math.random() * 0.3 - 0.15)).toFixed(2);
-                    newProd.stock = Math.floor(prod.stock * (0.7 + Math.random() * 0.6));
-                    additionalProducts.push(newProd);
-                });
-            }
-            products = products.concat(additionalProducts);
+            products = await response.json();
             
             totalProducts = products.length;
             totalPages = Math.ceil(totalProducts / itemsPerPage);
@@ -138,9 +64,39 @@ document.addEventListener('DOMContentLoaded', function() {
             renderProducts();
             renderPagination();
             updateCartBadge();
+            
+            // Also fetch categories and districts for filters
+            await loadFilters();
         } catch (error) {
             console.error('Error fetching products:', error);
             showError();
+        }
+    }
+    
+    // Load filter options
+    async function loadFilters() {
+        try {
+            // Fetch categories
+            const categoriesResponse = await fetch('/api/categories');
+            if (categoriesResponse.ok) {
+                const categories = await categoriesResponse.json();
+                categoryFilter.innerHTML = `
+                    <option value="">All Categories</option>
+                    ${categories.map(cat => `<option value="${cat.id}">${cat.name}</option>`).join('')}
+                `;
+            }
+            
+            // Fetch districts
+            const districtsResponse = await fetch('/api/districts');
+            if (districtsResponse.ok) {
+                const districts = await districtsResponse.json();
+                districtFilter.innerHTML = `
+                    <option value="">All Districts</option>
+                    ${districts.map(dist => `<option value="${dist.id}">${dist.name}</option>`).join('')}
+                `;
+            }
+        } catch (error) {
+            console.error('Error loading filters:', error);
         }
     }
     
@@ -156,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         
-        document.getElementById('retryButton').addEventListener('click', fetchProducts);
+        document.getElementById('retryButton')?.addEventListener('click', fetchProducts);
     }
     
     // Render products for current page
@@ -174,8 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
             productsToDisplay = products.filter(product => {
                 const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
                                      product.description.toLowerCase().includes(searchTerm);
-                const matchesCategory = category ? product.category === category : true;
-                const matchesDistrict = district ? product.district === district : true;
+                const matchesCategory = category ? product.category_id == category : true;
+                const matchesDistrict = district ? product.district_id == district : true;
                 return matchesSearch && matchesCategory && matchesDistrict;
             });
             
@@ -203,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             
-            document.getElementById('resetFilters').addEventListener('click', () => {
+            document.getElementById('resetFilters')?.addEventListener('click', () => {
                 productSearch.value = '';
                 categoryFilter.value = '';
                 districtFilter.value = '';
@@ -215,24 +171,29 @@ document.addEventListener('DOMContentLoaded', function() {
         // Render product cards
         productsToDisplay.forEach(product => {
             const productCard = document.createElement('div');
-            productCard.className = 'col-md-6 col-lg-4 col-xl-3';
+            productCard.className = 'col-md-6 col-lg-4 col-xl-3 mb-4';
             productCard.innerHTML = `
-                <div class="product-card">
-                    <div class="product-img-container">
-                        <img src="${product.image}" alt="${product.name}" class="product-img">
+                <div class="card h-100 product-card">
+                    <div class="product-img-container position-relative">
+                        <img src="${product.images?.[0]?.url || 'images/default-product.jpg'}" 
+                             alt="${product.name}" 
+                             class="card-img-top product-img" 
+                             style="height: 200px; object-fit: cover;">
                         ${product.stock < 10 ? '<span class="badge bg-warning position-absolute top-0 end-0 m-2">Low Stock</span>' : ''}
                     </div>
-                    <div class="product-body">
-                        <h3 class="product-title">${product.name}</h3>
-                        <div class="product-price">৳${product.price}</div>
-                        <div class="product-seller">Sold by: ${product.seller}</div>
-                        <div class="product-location">
-                            <i class="fas fa-map-marker-alt"></i> ${product.district.charAt(0).toUpperCase() + product.district.slice(1)}
+                    <div class="card-body">
+                        <h3 class="card-title product-title">${product.name}</h3>
+                        <div class="product-price">৳${product.price.toFixed(2)}</div>
+                        <div class="product-seller text-muted small">Sold by: ${product.farmer?.name || 'Local Farmer'}</div>
+                        <div class="product-location text-muted small">
+                            <i class="fas fa-map-marker-alt"></i> ${product.district?.name || 'Bangladesh'}
                         </div>
-                        <div class="product-rating">
-                            ${'★'.repeat(product.rating)}${'☆'.repeat(5 - product.rating)}
+                        <div class="product-rating text-warning">
+                            ${'★'.repeat(product.rating || 4)}${'☆'.repeat(5 - (product.rating || 4))}
                         </div>
-                        <button class="btn btn-success view-details-btn" data-id="${product.id}">
+                    </div>
+                    <div class="card-footer bg-white border-top-0">
+                        <button class="btn btn-success w-100 view-details-btn" data-id="${product.id}">
                             <i class="fas fa-eye me-2"></i> View Details
                         </button>
                     </div>
@@ -250,94 +211,204 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Show product details in modal
-    function showProductDetails(productId) {
-        const product = products.find(p => p.id === productId);
-        if (!product) return;
+    // Render pagination controls
+    function renderPagination() {
+        pagination.innerHTML = '';
         
-        let stockStatus;
-        let stockClass;
-        if (product.stock > 20) {
-            stockStatus = 'In Stock';
-            stockClass = 'in-stock';
-        } else if (product.stock > 0) {
-            stockStatus = 'Low Stock';
-            stockClass = 'low-stock';
-        } else {
-            stockStatus = 'Out of Stock';
-            stockClass = 'out-of-stock';
+        if (totalPages <= 1) return;
+        
+        // Previous button
+        const prevLi = document.createElement('li');
+        prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+        prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>`;
+        prevLi.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentPage > 1) {
+                currentPage--;
+                renderProducts();
+            }
+        });
+        pagination.appendChild(prevLi);
+        
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLi = document.createElement('li');
+            pageLi.className = `page-item ${currentPage === i ? 'active' : ''}`;
+            pageLi.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+            pageLi.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage = i;
+                renderProducts();
+            });
+            pagination.appendChild(pageLi);
         }
         
-        // Create specs list
-        let specsHTML = '';
-        for (const [key, value] of Object.entries(product.specs || {})) {
-            specsHTML += `
-                <div class="spec-item">
-                    <strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong>
-                    <span>${value}</span>
+        // Next button
+        const nextLi = document.createElement('li');
+        nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+        nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>`;
+        nextLi.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderProducts();
+            }
+        });
+        pagination.appendChild(nextLi);
+    }
+    
+    // Show product details in modal
+    async function showProductDetails(productId) {
+        try {
+            // Show loading in modal
+            productModalTitle.textContent = 'Loading...';
+            productModalBody.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            `;
+            productModal.show();
+            
+            // Fetch product details
+            const response = await fetch(`/api/products/${productId}`);
+            if (!response.ok) throw new Error('Failed to fetch product details');
+            const product = await response.json();
+            
+            let stockStatus;
+            let stockClass;
+            if (product.stock > 20) {
+                stockStatus = 'In Stock';
+                stockClass = 'text-success';
+            } else if (product.stock > 0) {
+                stockStatus = 'Low Stock';
+                stockClass = 'text-warning';
+            } else {
+                stockStatus = 'Out of Stock';
+                stockClass = 'text-danger';
+            }
+            
+            // Create specs list
+            const specs = {
+                'Category': product.category?.name || 'N/A',
+                'Unit Type': product.unit_type || 'N/A',
+                'Harvest Date': product.harvest_date || 'N/A',
+                'Organic': product.is_organic ? 'Yes' : 'No',
+                'Premium': product.is_premium ? 'Yes' : 'No'
+            };
+            
+            let specsHTML = '';
+            for (const [key, value] of Object.entries(specs)) {
+                specsHTML += `
+                    <div class="row mb-2">
+                        <div class="col-4 fw-bold">${key}:</div>
+                        <div class="col-8">${value}</div>
+                    </div>
+                `;
+            }
+            
+            // Create image carousel
+            const imagesHTML = product.images?.length > 0 ? `
+                <div id="productCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded">
+                        ${product.images.map((img, index) => `
+                            <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                                <img src="${img.url}" class="d-block w-100" alt="${product.name}" style="height: 300px; object-fit: cover;">
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            ` : `<img src="images/default-product.jpg" class="img-fluid rounded mb-3" alt="${product.name}" style="height: 300px; object-fit: cover;">`;
+            
+            productModalTitle.textContent = product.name;
+            productModalBody.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        ${imagesHTML}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h3 class="mb-0">৳${product.price.toFixed(2)}</h3>
+                            <span class="badge bg-success">${product.category?.name || 'Agricultural'}</span>
+                        </div>
+                        
+                        <p class="${stockClass} mb-3">
+                            <i class="fas fa-box"></i> ${stockStatus} (${product.stock} available)
+                        </p>
+                        
+                        <div class="mb-4">
+                            <label for="productQuantity" class="form-label">Quantity:</label>
+                            <input type="number" class="form-control" id="productQuantity" 
+                                   min="1" max="${product.stock}" value="1">
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Product Specifications</h5>
+                                ${specsHTML}
+                            </div>
+                        </div>
+                        
+                        <div class="product-rating text-warning mb-3">
+                            ${'★'.repeat(product.rating || 4)}${'☆'.repeat(5 - (product.rating || 4))}
+                            (${product.review_count || Math.floor(Math.random() * 50) + 1} reviews)
+                        </div>
+                        
+                        <h5>Product Description</h5>
+                        <p>${product.description || 'No description available.'}</p>
+                        
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h6 class="card-title"><i class="fas fa-user-tie me-2"></i> Farmer Information</h6>
+                                <p class="mb-1"><strong>Name:</strong> ${product.farmer?.name || 'Local Farmer'}</p>
+                                <p class="mb-1"><strong>Location:</strong> ${product.district?.name || 'Bangladesh'}</p>
+                                <p class="mb-0"><strong>Member Since:</strong> ${new Date(product.farmer?.created_at).getFullYear() || '2020'}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Initialize carousel if images exist
+            if (product.images?.length > 0) {
+                new bootstrap.Carousel(productModalBody.querySelector('#productCarousel'));
+            }
+            
+            // Update add to cart button
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            if (!addToCartBtn) return;
+            
+            if (product.stock === 0) {
+                addToCartBtn.disabled = true;
+                addToCartBtn.innerHTML = '<i class="fas fa-times-circle me-2"></i> Out of Stock';
+            } else {
+                addToCartBtn.disabled = false;
+                addToCartBtn.innerHTML = '<i class="fas fa-cart-plus me-2"></i> Add to Cart';
+                addToCartBtn.onclick = function() {
+                    const quantityInput = document.getElementById('productQuantity');
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    addToCart(product, quantity);
+                    productModal.hide();
+                };
+            }
+        } catch (error) {
+            console.error('Error loading product details:', error);
+            productModalBody.innerHTML = `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Failed to load product details. Please try again.
                 </div>
             `;
         }
-        
-        productModalTitle.textContent = product.name;
-        productModalBody.innerHTML = `
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="${product.image}" alt="${product.name}" class="modal-product-img img-fluid">
-                </div>
-                <div class="col-md-6">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <h3 class="modal-product-price mb-0">৳${product.price}</h3>
-                        <span class="badge bg-success">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</span>
-                    </div>
-                    
-                    <p class="${stockClass} modal-product-stock">
-                        <i class="fas fa-box"></i> ${stockStatus} (${product.stock} available)
-                    </p>
-                    
-                    <div class="mb-3">
-                        <label for="productQuantity" class="form-label">Quantity:</label>
-                        <input type="number" class="form-control" id="productQuantity" min="1" max="${product.stock}" value="1">
-                    </div>
-                    
-                    <div class="product-specs">
-                        ${specsHTML}
-                    </div>
-                    
-                    <div class="product-rating mb-3">
-                        ${'★'.repeat(product.rating)}${'☆'.repeat(5 - product.rating)}
-                        (${Math.floor(Math.random() * 50) + 1} reviews)
-                    </div>
-                    
-                    <h5>Product Description</h5>
-                    <p>${product.description}</p>
-                    
-                    <div class="seller-info mt-4 p-3 bg-light rounded">
-                        <h6><i class="fas fa-user-tie me-2"></i> Seller Information</h6>
-                        <p class="mb-1"><strong>Name:</strong> ${product.seller}</p>
-                        <p class="mb-1"><strong>Location:</strong> ${product.district.charAt(0).toUpperCase() + product.district.slice(1)} District</p>
-                        <p class="mb-0"><strong>Member Since:</strong> ${2020 + Math.floor(Math.random() * 3)}</p>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        // Update add to cart button
-        const addToCartBtn = document.getElementById('addToCartBtn');
-        if (product.stock === 0) {
-            addToCartBtn.disabled = true;
-            addToCartBtn.innerHTML = '<i class="fas fa-times-circle me-2"></i> Out of Stock';
-        } else {
-            addToCartBtn.disabled = false;
-            addToCartBtn.innerHTML = '<i class="fas fa-cart-plus me-2"></i> Add to Cart';
-            addToCartBtn.onclick = function() {
-                const quantity = parseInt(document.getElementById('productQuantity').value) || 1;
-                addToCart(product, quantity);
-                productModal.hide();
-            };
-        }
-        
-        productModal.show();
     }
     
     // Add product to cart
@@ -351,8 +422,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: product.id,
                 name: product.name,
                 price: product.price,
-                image: product.image,
-                seller: product.seller,
+                image: product.images?.[0]?.url || 'images/default-product.jpg',
+                seller: product.farmer?.name || 'Local Farmer',
                 quantity: quantity,
                 maxQuantity: product.stock
             });
@@ -363,6 +434,11 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCartBadge();
         
         // Show success message
+        showToast(`${quantity} × ${product.name} added to your cart!`);
+    }
+    
+    // Helper function to show toast messages
+    function showToast(message) {
         const toast = document.createElement('div');
         toast.className = 'position-fixed bottom-0 end-0 p-3';
         toast.style.zIndex = '11';
@@ -373,7 +449,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
                 </div>
                 <div class="toast-body">
-                    ${quantity} × ${product.name} added to your cart!
+                    ${message}
                 </div>
             </div>
         `;
